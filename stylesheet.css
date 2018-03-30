@@ -1,0 +1,403 @@
+    html, body {
+        margin: 0;
+        /*height: 100%;*/
+    }
+
+    #header {
+    	height: auto;
+    }
+    
+    .body {
+        /* Height of the footer */
+        padding: 10px 0 60px 0;
+    }
+
+    .site-footer, .hero:after {
+    	color: #FFF;
+    	height:30px;   /* Height of the footer */
+    }
+    
+    .hero {
+    	display: grid;
+    	background: #9ACD32;
+    	height: 210px;
+    	left: 0;
+    	right: 0;
+    	margin-top: 10px;
+    	padding-top: 10px;
+    	grid-area: hero;
+    	grid-template-columns: 2fr max-content 2fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+    	"bannerleft cunit bannerright";
+    	
+    }
+    
+    .bannerleft {
+    	content: "";
+    	grid-area: bannerleft;
+    	position: absolute;
+    }
+    
+    .hero-center-unit {
+    	grid-area: cunit;
+    	position: relative;
+    	background-color: #333;
+    	border-radius: 50%;
+    	border: 6px solid #333;
+    }
+    
+    .hero-image img {
+    	display: block;
+        max-width:250px;
+        max-height:250px;
+        border-radius: 50%;
+    }
+    
+    .hero-image img {
+    	border-radius: 50%;
+    	border: 4px solid #FFE3D8;
+    }
+     
+    #hero-image-wrapper {
+    	position: relative;
+    	height: auto;
+    	width: auto;
+    	backface-visibility: hidden;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        transition: -webkit-transform 1s ease;
+  	
+    }
+    
+    #original {
+    	z-index: 1;
+    	position: absolute;
+    }
+    
+    
+    #alternate {
+        position: absolute;
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    
+    #dummy {
+    	/* dummy element to stretch parent dimensions */
+    	position: relative;
+    	width: auto;
+    	height: auto;
+    	visibility: hidden;
+    }
+    
+    #hero-image-wrapper.heads {
+        -webkit-animation: flipHeads 2s ease-out forwards;
+        -moz-animation: flipHeads 2s ease-out forwards;
+        -o-animation: flipHeads 2s ease-out forwards;
+        animation: flipHeads 2s ease-out forwards;
+    }
+    
+    #hero-image-wrapper.tails {
+        -webkit-animation: flipTails 2s ease-out forwards;
+        -moz-animation: flipTails 2s ease-out forwards;
+        -o-animation: flipTails 2s ease-out forwards;
+        animation: flipTails 2s ease-out forwards;
+    }
+
+    @-webkit-keyframes flipHeads {
+        from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+        to { -webkit-transform: rotateY(360deg); -moz-transform: rotateY(360deg); transform: rotateY(360deg); }
+    }
+    @-webkit-keyframes flipTails {
+        from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
+        to { -webkit-transform: rotateY(540deg); -moz-transform: rotateY(540deg); transform: rotateY(540deg); }
+    }
+
+    .bannerright {
+        grid-area: bannerright;
+        display: flex;
+    }
+
+    svg, img, canvas {
+        display: block;
+    }
+
+    #myCanvas {
+        position: relative;
+        height: 200px;
+        max-width: 540px;
+        border: 1px solid #000000;
+    }
+
+    #mosquito {
+        height: 48px;
+        width: 48px;
+    }
+
+    #mosquito path {
+
+    }
+
+    .frog {
+    	position: relative;
+        z-index: 10;
+        bottom: 60px;
+        left: -15px;
+    }
+    
+    /* Start of thought bubble stuff */
+    
+    .thoughtbubble {
+      position: absolute;
+      bottom: 125px;
+      left: 50px;
+    }
+    
+    @media (max-width: 600px) {
+        #thoughtbubble {
+            display: none;
+        }
+    }
+
+    .thought {
+        position: absolute;
+        width: 100px;
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+        background-color: #fff;
+        border: 1px solid #666;
+        -webkit-border-radius: 58px;
+        -moz-border-radius: 58px;
+        border-radius: 58px;
+        
+    }
+
+    .thought:before {
+    	  content: "";
+    	  position: absolute;
+	  left: 10px;
+	  top: 70px;
+	  width: 20px;
+	  height: 20px;
+	  background-color: #FFF;
+	  border: 1px solid #666;
+	  -webkit-border-radius: 28px;
+	  -moz-border-radius: 28px;
+	  border-radius: 28px;
+    }
+
+    
+    
+    .thought:after {
+        content: "";
+        background-size: 48px 48px;
+        display: inline-block;
+    	position: absolute;
+        width: 100px;
+        height: 70px;
+        top: 0;
+        left: 0;
+        text-align: center;
+        line-height: 70px;
+        background: #fff url('cricket.png') no-repeat center;
+        background-size: 48px 48px;
+        border: 0 solid #666;
+        -webkit-border-radius: 58px;
+        -moz-border-radius: 58px;
+        border-radius: 58px;
+    }
+
+    .thought .thoughtpiece {
+        content: "";
+        position: absolute;
+        background: #FFF;
+        border: 1px solid #666;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+    }
+
+    .thought .thoughtpiece:first-child {
+      width: 47px;
+      height: 40px;
+      top: -5px;
+      left: -5px;
+    }
+    
+    .thought .thoughtpiece:nth-child(2) {
+      width: 70px;
+      height: 50px;
+      top: -10px;
+      left: 15px;
+    }
+    
+    .thought .thoughtpiece:nth-child(3) {
+      width: 48px;
+      height: 40px;
+      top: 0;
+      left: 60px;
+    }
+    
+    .thought .thoughtpiece:nth-child(4) {
+      width: 45px;
+      height: 40px;
+      top: 22px;
+      left: 60px;
+    }
+    
+    .thought .thoughtpiece:nth-child(5) {
+      width: 50px;
+      height: 50px;
+      top: 26px;
+      left: 26px;
+    }
+    
+    .thought .thoughtpiece:last-child {
+      width: 40px;
+      height: 40px;
+      top: 20px;
+      left: -7px;
+    }
+
+    /* End of thought bubble stuff */
+    
+    #frogbody {
+    	cursor: pointer;
+    }
+    
+    .frogface svg {
+    	width: 64px;
+    	height: 64px;
+    	position: absolute;
+    	bottom: -10px;
+    }
+    
+    .halfshut path {
+  	animation: blink 1s forwards;
+    }
+
+    .fullyshut path {
+	  animation: blink 1s forwards;
+	  animation-delay: 0.1s;
+    }
+
+    @keyframes blink {
+          0% {
+            fill: none;
+          }
+          20% {
+            fill: #77B255;
+          }
+          21% {
+            fill: none;
+          }
+          100% {
+            fill: none;
+          }
+    }
+    
+    .frogarms img:nth-child(1) {
+    	width: 64px;
+    	height: 64px;
+    	position: absolute;
+    	bottom: -51px;
+    	left: -35px;
+    	transform: rotate(-2deg);
+    }
+    
+    .frogarms img:nth-child(2) {
+    	width: 64px;
+    	height: 64px;
+    	position: absolute;
+    	bottom: -58px;
+    	left: 11px;
+    	-moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1) rotate(325deg);
+    }
+    
+    .tongue {
+    	display: inline-block;
+    	position: absolute;
+        visibility: hidden;
+    	bottom: 8px;
+    	left: 30px; /* This is grid dependent, % of the 2 grids it currently occupies */
+        height:6px;
+        width:6px;
+        border-bottom:6px solid #eeb4b4;
+        border-radius: 6px 3px 3px 3px;
+
+        /* tongue animation */
+        -webkit-animation: IdleTongue 3s;
+        -moz-animation:    IdleTongue 3s;
+        -o-animation:      IdleTongue 3s;
+        animation:         IdleTongue 3s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+
+    }
+    
+    @keyframes IdleTongue {
+    	0% {
+        	width: 50px;
+    	}
+    	50% {
+    		width: 6px;
+    	}
+    	
+    	100% {
+    		width: 50px;
+    	}
+    }
+    
+    @keyframes ShowTongue {
+    	from { visibility: hidden; }
+    	to { visibility: visible; }
+    }
+    
+    .nav-list {
+    }
+    
+    ul {
+        
+        display: flex;
+    	list-style-type: none;
+    	height: 40px;
+        justify-content: flex-end;
+        margin: 10px 0 0 0;
+    	padding: 0;
+    	background-color: #333;
+    	
+    }
+
+    li {
+        display: inline;
+        padding: 10px 0 10px 0;
+    }
+
+    li a {
+    	color: white;
+    	text-align: center;
+    	padding: 11px 10px 10px 10px;
+    	text-decoration: none;
+    }
+
+    li a:hover {
+    	background-color: #111;
+    	color: #FFF;
+    }
+
+    body {
+        background: #222;
+        color: #000;
+    }
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: inherit;
+    }
